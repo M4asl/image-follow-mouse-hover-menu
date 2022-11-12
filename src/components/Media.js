@@ -35,7 +35,9 @@ const Media = ({ url, active, x, y }) => {
       src={url}
       alt="sample data"
       style={{
-        transform: `translate(${x}px, ${y}px)`,
+        transform: `translate(${x - width / 2}px, ${
+          y - height / 2
+        }px)`,
       }}
     />
   );
