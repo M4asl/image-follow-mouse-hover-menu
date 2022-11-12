@@ -48,7 +48,13 @@ const App = () => {
         {sampleData.map(({ mediaUrl }, index) => {
           const isActive = index === activeIndex;
           return (
-            <Media url={mediaUrl} active={isActive} key={index} />
+            <Media
+              url={mediaUrl}
+              active={isActive}
+              x={x}
+              y={y}
+              key={index}
+            />
           );
         })}
       </div>
