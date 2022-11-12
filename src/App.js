@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Media from './components/Media';
+import Title from './components/Title';
+import sampleData from './utils/sampleData';
+import './styles/home.scss';
 
-function App() {
+const App = () => {
+  const [activeIndex, setActiveIndex] = useState(-1);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="page-wrapper">
+      <div className="project-list">
+        {sampleData.map(({ title }, index) => (
+          <Title
+            title={title}
+            setActiveIndex={setActiveIndex}
+            index={index}
+          />
+        ))}
+      </div>
+      <div className="project-media">
+        {sampleData.map(({ mediaUrl }, index) => {
+          const isActive = index === activeIndex;
+          return <Media url={mediaUrl} active={isActive} />;
+        })}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
