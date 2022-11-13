@@ -1,29 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Media from './components/Media';
 import Title from './components/Title';
+import { useMousePosition } from './hooks/useMousePosition';
 import sampleData from './utils/sampleData';
 import './styles/home.scss';
-
-const useMousePosition = () => {
-  const [mousePosition, setMousePosition] = useState({
-    x: 0,
-    y: 0,
-  });
-
-  useEffect(() => {
-    const updateMousePosition = (event) => {
-      setMousePosition({ x: event.clientX, y: event.clientY });
-    };
-
-    window.addEventListener('mousemove', updateMousePosition);
-
-    return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
-    };
-  }, []);
-
-  return mousePosition;
-};
 
 const App = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
